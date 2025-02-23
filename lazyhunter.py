@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import requests
 import datetime
 import argparse
@@ -69,7 +71,8 @@ def log_results(ip, data, show_cves, show_ports, show_hosts, show_cve_ports):
             for cve in data["vulns"]:
                 cve_info = fetch_cve_details(cve)
                 severity = get_severity_color(cve_info.get("cvss_v3", 0))
-                log_lines.append(f"{timestamp} {BLUE}[{ip}]{RESET} [{GREEN}{cve}{RESET}] {severity}")
+                cve_description = cve_info.get("summary", "No description available.")[:80]  # Short description
+                log_lines.append(f"{timestamp} {BLUE}[{ip}]{RESET} [{GREEN}{cve}{RESET}] {severity} [{GREEN}{cve_description}{RESET}]")
 
     if show_cve_ports or not any([show_cves, show_ports, show_hosts]):
         if data.get("vulns") and data.get("ports"):
@@ -77,7 +80,8 @@ def log_results(ip, data, show_cves, show_ports, show_hosts, show_cve_ports):
             for cve in data["vulns"]:
                 cve_info = fetch_cve_details(cve)
                 severity = get_severity_color(cve_info.get("cvss_v3", 0))
-                log_lines.append(f"{timestamp} {BLUE}[{ip}]{RESET} [{GREEN}{cve}{RESET}] {severity} [PORTS: {GREEN}{ports_colored}{RESET}]")
+                cve_description = cve_info.get("summary", "No description available.")[:80]
+                log_lines.append(f"{timestamp} {BLUE}[{ip}]{RESET} [{GREEN}{cve}{RESET}] {severity} [{GREEN}{cve_description}{RESET}] [PORTS: {GREEN}{ports_colored}{RESET}]")
 
     if show_hosts or not any([show_cves, show_ports, show_cve_ports]):
         if data.get("hostnames"):
@@ -86,7 +90,7 @@ def log_results(ip, data, show_cves, show_ports, show_hosts, show_cve_ports):
 
     for line in log_lines:
         print(line)
-        time.sleep(10)  # Delay for output
+        time.sleep(2)  # Shorter delay for output
 
 # Process a single IP
 def process_ip(ip, show_cves, show_ports, show_hosts, show_cve_ports):
@@ -102,7 +106,7 @@ def process_ip(ip, show_cves, show_ports, show_hosts, show_cve_ports):
 def main():
     os.system("clear")  # Clear screen
     print(BANNER.center(80))
-    parser = argparse.ArgumentParser(description="LazyHunter - Automated Bug Hunting Recon Tool")
+    parser = argparse.ArgumentParser(description="LazyRecon - Automated Bug Hunting Recon Tool")
     parser.add_argument("-f", "--file", help="File containing a list of IPs")
     parser.add_argument("--ip", help="Single IP to scan")
     parser.add_argument("--cves", action="store_true", help="Show CVEs")
@@ -122,8 +126,7 @@ def main():
             for ip in ips:
                 process_ip(ip, args.cves, args.ports, args.host, args.cve_ports)
     else:
-        print(f"{YELLOW}[INFO]{RESET} No specific options selected, displaying all results...")
-        process_ip("127.0.0.1", True, True, True, True)  # Default to all enabled
+        process_ip("127.0.0.1", True, True, True, True)
 
     print(f"\n{YELLOW}[INFO]{RESET} Scan Completed")
 
