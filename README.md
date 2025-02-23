@@ -39,21 +39,20 @@ python lazyhunter.py --help
 python lazyhunter.py -h
 ```
 #### Output:
-(usage.png)
+![CVES](images/usage.png)
 
 ### Scan a Single IP
 ```bash
 python lazyhunter.py --ip 192.168.1.1
 ```
 #### Output:
-(Here, add an image showing the results of scanning a single IP)
+![CVES](images/singleip.png)
 
 ### Scan a List of IPs from a File
 ```bash
 python lazyhunter.py -f targets.txt
 ```
-#### Output:
-(Here, add an image showing results when scanning multiple IPs)
+
 
 ### Display CVEs Only
 ```bash
@@ -81,7 +80,7 @@ python lazyhunter.py --ip 192.168.1.1 --host
 python lazyhunter.py --ip 192.168.1.1 --cve+ports
 ```
 #### Output:
-(Here, add an image showing CVEs alongside open ports)
+![CVES](images/cves.png)
 
 ### Show All Results (Default Behavior)
 ```bash
