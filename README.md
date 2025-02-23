@@ -13,6 +13,8 @@
 
 LazyHunter is an automated reconnaissance tool designed for bug hunters, leveraging Shodan's InternetDB and CVEDB APIs. It retrieves open ports, hostnames, tags, and vulnerabilities for a given IP and fetches CVE details, including affected products and CVSS scores. Results are color-coded by severity for easy analysis.
 
+![CVES](images/lazyhunter.png)
+
 ## Features
 - Fetch open ports, hostnames, and associated vulnerabilities for an IP address.
 - Retrieve CVE details including severity levels.
