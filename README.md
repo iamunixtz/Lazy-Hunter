@@ -58,22 +58,17 @@ python lazyhunter.py -f targets.txt
 ```bash
 python lazyhunter.py --ip 192.168.1.1 --cves
 ```
-#### Output:
-(Here, add an image showing only CVE results)
+![CVES](images/singleipcves.png)
 
 ### Display Open Ports Only
 ```bash
 python lazyhunter.py --ip 192.168.1.1 --ports
 ```
-#### Output:
-(Here, add an image showing only open ports)
 
 ### Display Hostnames Only
 ```bash
 python lazyhunter.py --ip 192.168.1.1 --host
 ```
-#### Output:
-(Here, add an image showing only hostnames)
 
 ### Show CVEs with Ports
 ```bash
@@ -86,8 +81,6 @@ python lazyhunter.py --ip 192.168.1.1 --cve+ports
 ```bash
 python lazyhunter.py --ip 192.168.1.1
 ```
-#### Output:
-(Here, add an image showing all data by default)
 
 ## Attribution
 This tool uses data from the [Shodan InternetDB](https://internetdb.shodan.io/) and [CVE Database](https://cvedb.shodan.io/). Credits to Shodan for their valuable security intelligence.
