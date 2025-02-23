@@ -22,6 +22,14 @@ LazyHunter is an automated reconnaissance tool designed for bug hunters, leverag
 - Support for file input (`-f`) and output saving (`-o`).
 - Option to display combined CVEs and open ports.
 
+<h2 align="center">Tutorial LazyHunter</h2>
+
+<p align="center">
+  <a href="https://youtu.be/qY6Zl43hMko?si=uF5NFvnhKG6TcX2v">
+    <img src="https://img.youtube.com/vi/qY6Zl43hMko/0.jpg" alt="LazyHunter Demo" width="600" style="border: 2px solid red;">
+  </a>
+</p>
+
 ## Installation
 ```bash
 # Clone the repository
@@ -54,7 +62,6 @@ python lazyhunter.py --ip 192.168.1.1
 ```bash
 python lazyhunter.py -f targets.txt
 ```
-
 
 ### Display CVEs Only
 ```bash
@@ -92,4 +99,3 @@ LazyHunter is intended for educational and authorized security research purposes
 
 ## License
 LazyHunter is released under the MIT License. See `LICENSE` for more details.
-
